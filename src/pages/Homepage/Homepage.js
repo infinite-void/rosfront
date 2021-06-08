@@ -14,7 +14,7 @@ function Homepage() {
                 {
                     NAVLINKS.map((link, key) => {
                         if (link.text === "Homepage") {
-                            return;
+                            return null;
                         }
                         return <LinkBadges url={link.url} text={link.text} icon={link.icon} key={key}/>
                     })

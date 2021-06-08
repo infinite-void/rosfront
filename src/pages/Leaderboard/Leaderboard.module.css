@@ -9,7 +9,7 @@
 
 .main_box {
     max-width: 80%;
-    overflow-x: scroll;
+    overflow-x: auto;
     display: flex;
     justify-content: center;
 }

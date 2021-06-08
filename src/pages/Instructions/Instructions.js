@@ -34,6 +34,7 @@ function Instructions() {
                                     <img
                                         src={`${process.env.PUBLIC_URL}/images/instructions/${instruction.image}`}
                                         className={`${styles.image}`}
+                                        alt={"Instruction"}
                                     />
                                 </div>
                                 <div className={`${styles.content_box}`}>
