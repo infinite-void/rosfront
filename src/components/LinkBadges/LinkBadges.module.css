@@ -1,0 +1,13 @@
+.badge {
+    background-color: var(--secondary);
+    color: white;
+    padding: 10px;
+    border-radius:2%;
+    text-decoration: none;
+    vertical-align: center !important;
+    text-align: center;
+}
+
+.badge:hover {
+    opacity: 0.6;
+}

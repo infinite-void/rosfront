@@ -1,0 +1,13 @@
+.header {
+    font-size: 2rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-family: coolFont;
+    letter-spacing: 0.2rem;
+}
+
+@media only screen and (max-width: 767px) {
+    .header {
+        font-size: 1rem;
+    }
+}

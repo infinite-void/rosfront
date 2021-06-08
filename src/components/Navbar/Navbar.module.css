@@ -1,0 +1,51 @@
+.nav_side_hamburger {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.hamburger {
+    font-size: 30px;
+    color: var(--accent);
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+
+.nav_side {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 0px;
+    background-color: var(--accent);
+    z-index: 1;
+    overflow-x: hidden;
+    transition: all .5s;
+    padding-top: 75px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.nav_close {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.nav_link {
+    text-decoration: none;
+    color: var(--text);
+    margin-top: 20px;
+    font-size: 1.2rem;
+    transition: all 0.1s;
+}
+
+.nav_link:hover, .nav_close:hover, .hamburger:hover {
+    transform: scale(1.2) !important;
+}
