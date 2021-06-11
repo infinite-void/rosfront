@@ -1,0 +1,25 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 90%;
+}
+
+.box {
+    background-color: var(--secondary);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.box > h1 {
+    color: black;
+    font-size: 5rem;
+    margin: 0px auto;
+}
+
+.box > p {
+    color: var(--text);
+}

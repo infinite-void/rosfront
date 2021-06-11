@@ -1,0 +1,44 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .wrapper {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .image_box, .text_box {
+        width: 75% !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .wrapper {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .image_box, .text_box {
+        width: 75% !important;
+    }
+}
+
+.image_box, .text_box {
+    width: 40%;
+    text-align: center;
+}
+
+
+.image_box > img {
+    width: 75%;
+    height: 75%;
+}
+
+.text_box > h1 {
+    color: white;
+}
