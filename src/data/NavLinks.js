@@ -1,5 +1,5 @@
 import {FaList, FaPlay, FaTrophy} from "react-icons/fa";
-import {BiLogOut} from "react-icons/bi";
+import {BiLogOut, BiLogIn} from "react-icons/bi";
 import {HiHome} from "react-icons/hi";
 
 export const NAVLINKS = [
@@ -24,8 +24,16 @@ export const NAVLINKS = [
         "icon": <FaPlay/>
     },
     {
-        "url": "/logout",
-        "text": "Logout",
-        "icon": <BiLogOut/>
+        "text": "AUTH",
+        "login": {
+            "url": "/login",
+            "text": "Login",
+            "icon": <BiLogIn/>
+        },
+        "logout": {
+            "url": "/logout",
+            "text": "Logout",
+            "icon": <BiLogOut/>
+        }
     }
 ]

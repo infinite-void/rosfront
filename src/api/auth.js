@@ -21,9 +21,9 @@ export const apiSignin = async (credentials) => {
                 pwd: credentials.pwd
             }
         );
-        return response.data;
+        return response;
     } catch (error) {
-        return error.response.data;
+        return error.response;
     }
 };
 
@@ -40,9 +40,9 @@ export const apiRegister = async (credentials) => {
                 pwd: credentials.pwd
             }
         );
-        return response.data;
+        return response;
     } catch (error) {
-        return error.response.data;
+        return error.response;
     }
 };
 

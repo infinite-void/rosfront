@@ -1,17 +1,17 @@
 import styles from "./SolveRiddles.module.css"
 import {useEffect, useState} from "react"
-import {apiQuestion} from "../../api/auth"
+import {apiAnswer, apiQuestion} from "../../api/auth"
 import Question from "../../components/Question/Question"
 import Loader from "../../components/Loader/Loader"
 import Answer from "../../components/Answer/Answer"
 import Result from "../../components/Result/Result"
-import {apiAnswer} from "../../api/auth"
 import ErrorPage from "../ErrorPage/ErrorPage"
 import {toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 import {showToastNotification} from "../../components/ToastNotification"
 import {useHistory} from "react-router-dom"
-import Button from "../../components/Button/Button"
+
+import Cookies from "js-cookie"
 
 toast.configure()
 
@@ -32,8 +32,9 @@ function SolveRiddles() {
 
 
     const fetchQuestions = async (triggeredByAnswer = false) => {
+        let token = Cookies.get("token")
         const resp = await apiQuestion({
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxNjcwY2NmLWY2NWEtNGVmOS05MDEzLTU3MTcwMTA4NTdiZCIsImlhdCI6MTYyMzMzNTg0M30.OeDZQULc2ksgxbzP15WBEIzgof_uNJwxeA4dnYyN068"
+            "token": token
         });
 
         if (resp.status === 200) {
@@ -56,8 +57,15 @@ function SolveRiddles() {
 
 
     useEffect(() => {
-        setLoader(true)
-        fetchQuestions().then(() => setLoader(false))
+        if (Cookies.get("token") === undefined || Cookies.get("details") === undefined) {
+            Cookies.remove('token')
+            Cookies.remove('details')
+            history.push("/login")
+        } else {
+            setLoader(true)
+            fetchQuestions().then(() => setLoader(false))
+        }
+
         return () => {
 
         };
@@ -65,9 +73,10 @@ function SolveRiddles() {
 
     const submitAnswer = async (answer) => {
         setLoader(true)
+        let token = Cookies.get("token")
         const resp = await apiAnswer({
             "answer": answer,
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxNjcwY2NmLWY2NWEtNGVmOS05MDEzLTU3MTcwMTA4NTdiZCIsImlhdCI6MTYyMzQwNjY0N30.vsX4OeLwjZE1Z2Iesr1b4L94OHqoR-917ZBbNaPNAF8"
+            "token": token
         })
         if (resp.status === 200) {
             fetchQuestions(true).then(() => setLoader(false))

@@ -4,8 +4,11 @@ import {MdClose} from "react-icons/md"
 import {Link} from "react-router-dom";
 import React, {useRef} from "react";
 import {NAVLINKS} from "../../data/NavLinks";
+import {AuthContext} from "../../App"
+import {useContext} from "react"
 
 function Navbar() {
+    const Auth = useContext(AuthContext);
 
     const navSideRef = useRef()
 
@@ -32,6 +35,11 @@ function Navbar() {
 
                 {
                     NAVLINKS.map((link, key) => {
+
+                        if (link.text === "AUTH") {
+                            link = (Auth) ? link.logout : link.login;
+                        }
+
                         return (
                             <Link
                                 key={key}

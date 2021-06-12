@@ -17,8 +17,7 @@
 
 body {
     margin: 0;
-    font-family: primaryFont,
-    sans-serif;
+    font-family: 'primaryFont' !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #121212 !important;

@@ -6,17 +6,21 @@ import {apiLeaderboard} from "../../api/auth"
 import {toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 import {showToastNotification} from "../../components/ToastNotification"
+import Cookies from "js-cookie"
+import {useHistory} from "react-router-dom"
 
 toast.configure()
 
 function Leaderboard() {
 
+    const history = useHistory()
     const [leaderboard, setLeaderboard] = useState([]);
     const [loader, setLoader] = useState(false);
 
     const fetchLeaderboard = async () => {
+        let token = Cookies.get("token")
         const resp = await apiLeaderboard({
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxNjcwY2NmLWY2NWEtNGVmOS05MDEzLTU3MTcwMTA4NTdiZCIsImlhdCI6MTYyMzMzNTg0M30.OeDZQULc2ksgxbzP15WBEIzgof_uNJwxeA4dnYyN068"
+            "token": token
         })
 
         if (resp.status === 200) {
@@ -31,8 +35,16 @@ function Leaderboard() {
     }
 
     useEffect(() => {
-        setLoader(true)
-        fetchLeaderboard().then(() => setLoader(false))
+        if (Cookies.get("token") === undefined || Cookies.get("details") === undefined) {
+            Cookies.remove('token')
+            Cookies.remove('details')
+            history.push("/login")
+        } else {
+            setLoader(true)
+            fetchLeaderboard().then(() => setLoader(false))
+        }
+
+
         return () => {
 
         };
