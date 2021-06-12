@@ -8,6 +8,8 @@ import Loader from "./components/Loader/Loader"
 import SolveRiddles from "./pages/SolveRiddles/SolveRiddles"
 import ErrorPage from "./pages/ErrorPage/ErrorPage"
 import GameOver from "./pages/GameOver/GameOver"
+import Login from "./components/LoginSignup/Login"
+import SignUp from './components/LoginSignup/SignUp';
 
 function App() {
     return (
@@ -24,7 +26,9 @@ function App() {
                     <Route path="/solve" exact component={SolveRiddles}/>
                     <Route path="/loader" exact component={Loader}/>
                     <Route path="/game-over" exact component={GameOver}/>
-                    <Route>
+                    <Route path="/login" exact component={Login}/>
+                    <Route path="/signup" exact component={SignUp}/>
+                    <Route> 
                         <ErrorPage
                             errorCode={404}
                             errorMsg={"The page you are looking for might have been removed had its name changed or is temporarily unavailable."}
