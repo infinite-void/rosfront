@@ -104,7 +104,7 @@ export default function SignUp() {
     return (
         <>
             {loader && <Loader/>}
-            <div className="SignIn" style={{display: loader ? 'none' : 'block'}}>
+            <div className="SignIn" style={{display: loader && 'none'}}>
                 <Container component="main" maxWidth="xs" className="SignIn">
                     <CssBaseline/>
                     <div className={classes.paper}>

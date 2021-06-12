@@ -7,6 +7,8 @@ import ErrorPage from "../ErrorPage/ErrorPage"
 import Loader from "../../components/Loader/Loader"
 import Result from "../../components/Result/Result"
 
+import Cookies from "js-cookie"
+
 function GameOver() {
 
     const history = useHistory()
@@ -22,8 +24,9 @@ function GameOver() {
     }
 
     const checkIsGameOver = async () => {
+        let token = Cookies.get("token")
         const resp = await apiQuestion({
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxNjcwY2NmLWY2NWEtNGVmOS05MDEzLTU3MTcwMTA4NTdiZCIsImlhdCI6MTYyMzMzNTg0M30.OeDZQULc2ksgxbzP15WBEIzgof_uNJwxeA4dnYyN068"
+            "token": token
         });
 
         if (resp.status === 200) {
